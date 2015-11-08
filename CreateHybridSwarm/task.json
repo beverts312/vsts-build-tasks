@@ -1,0 +1,109 @@
+{
+  "id": "31b6fc30-4f28-11e5-bb62-b9cca27fcb78",
+  "name": "CreateHybridSwarm",
+  "friendlyName": "Create Hybdrid Swarm",
+  "description": "Creates a Swarm cluster with nodes in AWS and Azure",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Creates a Hybrid Swarm with nodes in AWS and Azure with the master being in AWS",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "15"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "CreateHybridSwarm $(message)",
+  "inputs": [
+    {
+      "name": "access",
+      "type": "string",
+      "label": "AWS Access Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Access Key http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html"
+    },
+    {
+      "name": "secret",
+      "type": "string",
+      "label": "AWS Secret Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Secret Key (http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)"
+    },
+    {
+      "name": "vpc",
+      "type": "string",
+      "label": "AWS VPC ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS VPC ID (https://aws.amazon.com/vpc)"
+    },
+    {
+      "name": "azureNodes",
+      "type": "string",
+      "label": "# of Nodes to put in Azure",
+      "defaultValue": "2",
+      "required": true,
+      "helpMarkDown": "Number of nodes to put in Azure"
+    },
+    {
+      "name": "awsNodes",
+      "type": "string",
+      "label": "# of Nodes to put in AWS",
+      "defaultValue": "2",
+      "required": true,
+      "helpMarkDown": "Number of nodes to put in AWS (including master)"
+    },
+    {
+      "name": "security",
+      "type": "string",
+      "label": "AWS Security Group",
+      "defaultValue": "wso2esb",
+      "required": true,
+      "helpMarkDown": "AWS Security Group (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#default-security-group)"
+    },
+    {
+      "name": "build",
+      "type": "string",
+      "label": "Machine Prefix",
+      "defaultValue": "pre",
+      "required": true,
+      "helpMarkDown": "Prefix for machine names"
+    },
+    {
+      "name": "azureId",
+      "type": "string",
+      "label": "Azure Subscription ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure Subscription ID"
+    },
+    {
+      "name": "azureCert",
+      "type": "string",
+      "label": "Azure Cert Path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path to Azure Cert on the build machine OR in the repo (http://docs.docker.com/machine/drivers/azure/)"
+    },
+    {
+      "name": "swarm",
+      "type": "string",
+      "label": "Swarm ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Swarm ID (to get a new one run `docker run swarm create` the output is a Swarm ID"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "hybdrid-swarm-create.js",
+      "argumentFormat": ""
+    }
+  }
+}

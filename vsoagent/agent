@@ -1,0 +1,7 @@
+{
+  "poolName": "POOL",
+  "serverUrl": "SERVER",
+  "agentName": "NAME",
+  "workFolder": "./_work",
+  "keepLogsSeconds": 345600
+}

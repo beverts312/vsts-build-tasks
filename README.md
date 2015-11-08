@@ -1,32 +1,53 @@
-# You've added your first ReadMe file!
-A README.md file is intended to quickly orient readers to what your project can do.  New to Markdown? [Learn more](http://go.microsoft.com/fwlink/p/?LinkId=524306&clcid=0x409)
+## vsoagent Docker Image 
+***Still working on this***  
+This is for a containerized VSO build agent.
+Included binaries
+- docker
+- docker-compose
+- docker-machine  
+http://roadtoalm.com/2015/08/07/running-a-visual-studio-build-vnext-agent-in-a-docker-container/  
+  
+## Working with Tasks
+For doing anything with tasks you will need:   
+- tfx-cli (`npm install -g tfx-cli`)
+- a personal access token (go to the 'Security' tab on your VSO profile)  
 
-## Edit this ReadMe and commit your change to a topic branch
-In Git, branches are cheap.  You should use them whenever you're making changes to your repository.  Edit this file by clicking on the edit icon.
+You will then need to connect to your VSO account by running `tfx login`  
 
-Then make some changes to this ReadMe file.
+You can then run:  
+- `tfx build tasks list` lists all your tasks and some basic info about them  
+- `tfx build tasks create` will ask you some questions about the task you want to make and create a template for it  
+- `tfx build tasks upload <task dir>` uploads the task your VSO account (you will need to use `--overwrite=true` if the task already exists)
 
-> Make some **edits** to _this_ blockquote
+# Tasks  
 
-When you are done, click the dropdown arrow next to the save button - that will allow you to commit your changes to a new branch.
+## Docker Build  
+This task must be run using the xplat agent with docker installed.  
+Lets you build a Dockerfile into a Docker Image
+Parameters:  
+- Working Directory: this should be where your dockerfile is located  
+- Image Name: name to tag your image with (i.e beverts312/vsoagent)
 
-## Create a pull request to contribute your changes back into master
-Pull requests are the way to move changes from a topic branch back into the master branch.
+## Docker Tag  
+This task must be run using the xplat agent with docker installed.  
+Lets you tag a docker image
+Parameters:  
+- Old Tag: Old Image tag (i.e beverts312/vsoagent)
+- New Tag: New Image tag (i.e beverts312/vsoagent:100)
 
-Click on the **Pull Requests** page in the **CODE** hub, then click "New Pull Request" to create a new pull request from your topic branch to the master branch.
+## Docker Push  
+This task must be run using the xplat agent with docker installed.  
+Lets you push a docker image
+Parameters:  
+- Image Name: name of the image to push (i.e beverts312/vsoagent)
 
-When you are done adding details, click "Create Pull request". Once a pull request is sent, reviewers can see your changes, recommend modifications, or even push follow-up commits.
+## Create Azure Swarm Cluster  
+***Coming Soon***
 
-First time creating a pull request?  [Learn more](http://go.microsoft.com/fwlink/?LinkId=533211&clcid=0x409)
 
-### Congratulations! You've completed the grand tour of the CODE hub!
+## Create AWS Swarm Cluster  
+***Coming Soon***
 
-# Next steps
 
-If you haven't done so yet:
-* [Install Visual Studio](http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x409&slcid=0x409)
-* [Install Git](http://git-scm.com/downloads)
-
-Then clone this repo to your local machine to get started with your own project.
-
-Happy coding!
+## Create Hybrid Swarm Cluster  
+***Coming Soon***

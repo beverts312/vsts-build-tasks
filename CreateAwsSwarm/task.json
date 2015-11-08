@@ -1,0 +1,77 @@
+{
+  "id": "4d5f41a0-4540-11e5-9f9e-adf7195ea789",
+  "name": "CreateAwsSwarm",
+  "friendlyName": "Create AWS Swarm",
+  "description": "Uses docker-machine to create a Docker Swarm Cluster",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Creates a docker swarm cluster. Requires: docker, docker-machine",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "2",
+    "Patch": "15"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "CreateAwsSwarm $(message)",
+  "inputs": [
+    {
+      "name": "access",
+      "type": "string",
+      "label": "AWS Access Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Access Key http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html"
+    },
+    {
+      "name": "secret",
+      "type": "string",
+      "label": "AWS Secret Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Secret Key http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html"
+    },
+    {
+      "name": "vpc",
+      "type": "string",
+      "label": "AWS VPC ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS VPC ID https://aws.amazon.com/vpc"
+    },
+    {
+      "name": "nodes",
+      "type": "string",
+      "label": "# of Nodes",
+      "defaultValue": "2",
+      "required": true,
+      "helpMarkDown": "Number of nodes (including master)"
+    },
+    {
+      "name": "security",
+      "type": "string",
+      "label": "AWS Security Group",
+      "defaultValue": "wso2esb",
+      "required": true,
+      "helpMarkDown": "AWS Security Group http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#default-security-group"
+    },
+    {
+      "name": "build",
+      "type": "string",
+      "label": "Machine Prefix",
+      "defaultValue": "pre",
+      "required": true,
+      "helpMarkDown": "Prefix for machine names"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "aws-swarm-create.js",
+      "argumentFormat": ""
+    }
+  }
+}
