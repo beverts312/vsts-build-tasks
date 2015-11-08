@@ -1,0 +1,45 @@
+{
+  "id": "a506ef70-4220-11e5-88af-99409b8d7c84",
+  "name": "DockerTag",
+  "friendlyName": "Docker Tag",
+  "description": "Tag a Docker Image",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Tag a Docker Image",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "DockerTag $(message)",
+  "inputs": [
+       {
+      "name": "oldTag",
+      "type": "string",
+      "label": "Old Tag",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Old Image tag (i.e beverts312/vsoagent)"
+    },
+        {
+      "name": "newTag",
+      "type": "string",
+      "label": "New Tag Tag",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "New Image tag (i.e beverts312/vsoagent:tag)"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "dtag.js",
+      "argumentFormat": ""
+    }
+  }
+}

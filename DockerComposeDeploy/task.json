@@ -1,0 +1,77 @@
+{
+  "id": "289262c0-455f-11e5-991f-b59353d05e0f",
+  "name": "DockerComposeDeploy",
+  "friendlyName": "Docker Compose Deploy",
+  "description": "Uses docker compose to deploy containers",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Executes a docker compose up",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "1"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "DockerComposeDeploy $(message)",
+  "inputs": [
+    {
+      "name": "cwd",
+      "type": "filePath",
+      "label": "Compose Direcotry",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Directory where compose file is located"
+    },
+    {
+      "name": "file",
+      "type": "string",
+      "label": "Compose File",
+      "defaultValue": "docker-compose.yml",
+      "required": true,
+      "helpMarkDown": "Compose file name"
+    },
+    {
+      "name": "scale",
+      "type": "string",
+      "label": "Scale arguement",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Scale argument"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "label": "Machine Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "If host the target host exists in machine use its name here (Alternatively set the host below)"
+    },
+    {
+      "name": "swarm",
+      "type": "boolean",
+      "label": "Swarm",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "If target is a swarm cluster set this to true (this param only matters if using `Machine Name`)"
+    },
+    {
+      "name": "host",
+      "type": "string",
+      "label": "Target Host",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "If not using machine name set the host ip and port that the docker daemon is listening on (if name is set this value will be ignored)"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "docker-compose-deploy.js",
+      "argumentFormat": ""
+    }
+  }
+}
