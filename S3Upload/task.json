@@ -1,0 +1,82 @@
+{
+  "id": "38d488e0-9959-11e5-ba8a-29ab4686fa44",
+  "name": "S3Upload",
+  "friendlyName": "Upload file to S3",
+  "description": "Upload file to S3",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "3"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "S3Upload $(message)",
+  "inputs": [
+    {
+      "name": "file",
+      "type": "filePath",
+      "label": "Path to file to Upload",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "File to upload"
+    },
+    {
+      "name": "access",
+      "type": "string",
+      "label": "AWS Access",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Access Key"
+    },
+    {
+      "name": "secret",
+      "type": "string",
+      "label": "AWS Secret",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Secret Key"
+    },
+    {
+      "name": "bucket",
+      "type": "string",
+      "label": "S3 Bucket",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "S3 Bucket"
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "label": "Region",
+      "defaultValue": "us-east-1",
+      "required": false,
+      "helpMarkDown": "AWS Region"
+    },
+    {
+      "name": "prefix",
+      "type": "string",
+      "label": "Prefix",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "This can be used to specify a path in S3 and or append a unique identifier such as $(Build.BuildNumber)"
+    }
+  ],
+  "execution": {
+     "PowerShell": {
+      "target": "$(currentDirectory)\\s3.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    },
+    "Node": {
+      "target": "s3.js",
+      "argumentFormat": ""
+    }
+  }
+}
