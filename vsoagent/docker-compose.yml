@@ -1,8 +1,0 @@
-vsoagent:
-  image: beverts312/vsoagent
-  environment:
-  - vso_username=user
-  - vso_password=password
-  - vso_agentname=name
-  - vso_agentpool=pool 
-  - vso_url=https://user.visualstudio.com
