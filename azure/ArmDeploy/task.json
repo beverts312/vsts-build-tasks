@@ -38,7 +38,7 @@
   ],
   "execution": {
     "Node": {
-      "target": "dbuild.js",
+      "target": "build.js",
       "argumentFormat": ""
     }
   }

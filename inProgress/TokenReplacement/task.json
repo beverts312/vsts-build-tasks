@@ -32,6 +32,10 @@
       "target": "$(currentDirectory)\\tokenmanager.ps1",
       "argumentFormat": "",
       "workingDirectory": "$(currentDirectory)"
+    },
+     "Node": {
+      "target": "dpush.js",
+      "argumentFormat": ""
     }
   }
 }

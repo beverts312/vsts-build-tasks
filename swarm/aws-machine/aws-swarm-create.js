@@ -1,8 +1,10 @@
 var path = require('path');
 var tl = require('vso-task-lib');
 var async = require('async');
+var Docker = require('dockerode');
+
 var echo = new tl.ToolRunner(tl.which('echo', true));
-var docker = new tl.ToolRunner(tl.which('docker', true));
+
 var machines = [];
 
 var nodes = tl.getInput('nodes', true);
@@ -13,8 +15,14 @@ var securityGroup = tl.getInput('security',true);
 var build = tl.getInput('build',true);
 var name = build + '-aws-swarm-';
 
-var swarmId = '6993c07b5f186fbf7dca5a4abcf5cd6d';
-
+var docker = new Docker({socketPath: '/var/run/docker.sock'});
+docker.createContainer({ Image: 'swarm', Cmd: ['create'], name: 'swarm' }, function (err, data, container) {
+    if(err){
+        console.log('Failed to get swarm ID');
+        console.log(err.message);
+    }
+});
+/*
 function createMachine(num)
 {
     var dockerMachine = new tl.ToolRunner(tl.which('docker-machine', true));
@@ -45,7 +53,7 @@ docker.exec({ failOnStdErr: false })
     echo.arg(buffer.toString("utf-8"));
     echo.exec();
 }).then(function(code) {
-  /*  for(var i=0 ; i < nodes; i++){
+   for(var i=0 ; i < nodes; i++){
         machines.push(createMachine(i));
     }
     for(var i=0; i < nodes; i++){
@@ -61,10 +69,10 @@ docker.exec({ failOnStdErr: false })
                 tl.exit(1);
             })
         }
-    }*/
+    }
     tl.exit(0);
 }).fail(function(err) {
     console.error(err.message);
     tl.debug('taskRunner fail');
     tl.exit(1);
-});
+});*/
