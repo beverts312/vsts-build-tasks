@@ -1,0 +1,45 @@
+{
+  "id": "f40b5870-41d2-11e5-b731-45980e2e7a60",
+  "name": "DockerBuild",
+  "friendlyName": "Docker Build",
+  "description": "Builds a Docker Image from a Dockerfile",
+  "author": "Bailey Everts",
+  "helpMarkDown": "This can be used to build docker images",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "8"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "DockerBuild $(message)",
+  "inputs": [
+    {
+      "name": "cwd",
+      "type": "filePath",
+      "label": "Working Directory",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "This should be the directory containing your dockerfile"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "label": "Image Name",
+      "defaultValue": "image",
+      "required": true,
+      "helpMarkDown": "This should be what you want your image to be named (including tag)"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "build.js",
+      "argumentFormat": ""
+    }
+  }
+}
