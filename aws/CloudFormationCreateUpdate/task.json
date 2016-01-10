@@ -13,38 +13,81 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "1",
+    "Minor": "10",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "CloudFormationCreateUpdate $(message)",
   "inputs": [
     {
-      "name": "cwd",
+      "name": "template",
       "type": "filePath",
-      "label": "Working Directory",
+      "label": "Template",
       "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "Current working directory when CloudFormationCreateUpdate is run."
+      "required": true,
+      "helpMarkDown": "Full path to template"
     },
     {
-      "name": "msg",
+      "name": "access",
       "type": "string",
-      "label": "Message",
-      "defaultValue": "Hello World",
+      "label": "AWS Access",
+      "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Message to echo out"
+      "helpMarkDown": "AWS Access Key"
+    },
+    {
+      "name": "secret",
+      "type": "string",
+      "label": "AWS Secret",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "AWS Secret Key"
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "label": "Region",
+      "defaultValue": "us-east-1",
+      "required": true,
+      "helpMarkDown": "AWS Region"
+    },
+    {
+      "name": "stack",
+      "type": "string",
+      "label": "Stack Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Common"
+    },
+    {
+      "name": "onFailure",
+      "type": "string",
+      "label": "On Failure",
+      "defaultValue": "ROLLBACK",
+      "required": true,
+      "helpMarkDown": "DO_NOTHING | ROLLBACK | DELETE"
+    },
+    {
+      "name": "paramsPath",
+      "type": "filePath",
+      "label": "Template Params",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Full path to params file"
+    },
+        {
+      "name": "tags",
+      "type": "string",
+      "label": "Tags",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Tags in From:[{Key:string,Value:string},...]"
     }
   ],
   "execution": {
     "Node": {
-      "target": "sample.js",
+      "target": "task.js",
       "argumentFormat": ""
-    },
-    "PowerShell": {
-      "target": "$(currentDirectory)\\sample.ps1",
-      "argumentFormat": "",
-      "workingDirectory": "$(currentDirectory)"
     }
   }
 }
