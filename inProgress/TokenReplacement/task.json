@@ -3,38 +3,48 @@
   "name": "TokenReplacement",
   "friendlyName": "Replace Tokens",
   "description": "Swaps .token files in place of the non-tokenized versions",
-  "author": "InCycle Software",
+  "author": "Colin Dembovsky",
   "category": "Utility",
   "visibility": [
     "Build",
     "Release"
   ],
-  "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "1",
-    "Patch": "4"
+    "Minor": "0",
+    "Patch": "5"
   },
-  "minimumAgentVersion": "1.83.0",
-  "instanceNameFormat": "tokenmanager $(message)",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced",
+      "isExpanded": false
+    }
+  ],
+  "minimumAgentVersion": "1.91.0",
+  "instanceNameFormat": "Replace tokens in $(filePath)",
   "inputs": [
     {
-        "name": "tokenPattern",
-        "type": "filePath",
-        "label": "Solution",
-        "defaultValue": "**\\*.token",
-        "required": true,
-        "helpMarkDown": "Relative path from repo root to look for files. Wildcards can be used.  For example, `**\\*.token` for all .token files in all sub folders."
+      "name": "filePath",
+      "type": "filePath",
+      "label": "Target file",
+      "defaultValue": "",
+      "helpMarkDown": "Path to the file containing tokens.",
+      "required": true
+    },
+    {
+      "name": "tokenRegex",
+      "type": "string",
+      "label": "Token Regex",
+      "defaultValue": "__(\\w+)__",
+      "helpMarkDown": "Regex to use for token replacement. Must include a group match.",
+      "required": true,
+      "groupName": "advanced"
     }
   ],
   "execution": {
-    "PowerShell": {
-      "target": "$(currentDirectory)\\tokenmanager.ps1",
-      "argumentFormat": "",
-      "workingDirectory": "$(currentDirectory)"
-    },
-     "Node": {
-      "target": "dpush.js",
+    "Node": {
+      "target": "replaceTokens.js",
       "argumentFormat": ""
     }
   }
