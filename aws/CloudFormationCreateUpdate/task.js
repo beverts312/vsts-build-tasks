@@ -16,7 +16,6 @@ aws.config.update({region: region});
 
 var cloudformation = new aws.CloudFormation({apiVersion: '2010-05-15'});
 var template = fs.readFileSync(templatePath, "utf8");
-//var templateParams = fs.readFileSync(paramsPath, "utf8");
 var params = {
   StackName: stackName,
   OnFailure: onFailure,
@@ -33,8 +32,7 @@ else{
 
 cloudformation.createStack(params, function(err, data) {
   if (err){
-    console.log(params);
-    //console.log(err, err.stack);
+    console.log(err, err.stack);
     tl.exit(1);
   }    
   else {
