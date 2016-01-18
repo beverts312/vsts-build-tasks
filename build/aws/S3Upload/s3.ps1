@@ -1,14 +1,14 @@
 param (
     [string]$access, 
     [string]$secret, 
-    [string]$file,
+    [string]$dir,
     [string]$bucket,    
     [string]$region, 
     [string]$prefix
 )
 
 Write-Verbose 'Entering sample.ps1'
-Write-Verbose "file = $file"
+Write-Verbose "file = $dir"
 Write-Verbose "bucket = $bucket"
 Write-Verbose "region = $region"
 
