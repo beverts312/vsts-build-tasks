@@ -14,18 +14,18 @@
   "version": {
     "Major": "0",
     "Minor": "1",
-    "Patch": "4"
+    "Patch": "21"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "S3Upload $(message)",
   "inputs": [
     {
-      "name": "file",
+      "name": "dir",
       "type": "filePath",
-      "label": "Path to file to Upload",
+      "label": "Path of dir to Upload",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "File to upload"
+      "helpMarkDown": "dir to upload / File on windows agent currently"
     },
     {
       "name": "access",
@@ -60,12 +60,12 @@
       "helpMarkDown": "AWS Region"
     },
     {
-      "name": "prefix",
+      "name": "acl",
       "type": "string",
-      "label": "Prefix",
-      "defaultValue": "",
+      "label": "ACL",
+      "defaultValue": "public-read",
       "required": false,
-      "helpMarkDown": "DOESNT WORKThis can be used to specify a path in S3 and or append a unique identifier such as $(Build.BuildNumber)"
+      "helpMarkDown": "private,public-read,public-read-write,authenticated-read,aws-exec-read, bucket-owner-read, bucket-owner-full-control"
     }
   ],
   "execution": {
