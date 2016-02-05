@@ -10,7 +10,8 @@ var secret = tl.getInput('secret', true);
 var dir = tl.getPathInput('dir', true);
 var bucket = tl.getInput('bucket', true);      
 var region = tl.getInput('region', true);      
-var acl = tl.getInput('acl', false);      
+var acl = tl.getInput('acl', false);  
+var prefix = tl.getInput('prefix', false);    
 
 aws.config.update({accessKeyId: access, secretAccessKey: secret});
 aws.config.update({region: region});
@@ -25,6 +26,9 @@ fs.lstat(dir, function(err, stats) {
         getFilesInDirectory(dir, function(err, files){
             files.forEach(function(file){
                 var shortFile = file.substring(dir.length + 1);        
+                if(prefix){
+                    shortFile = prefix + shortFile;
+                }
                 var params = {Bucket: bucket, Key: shortFile, ACL: acl, ContentType: getContentType(file.split('.').pop()), Body: fs.createReadStream(file) };
                 s3.upload(params, function(err, data) {
                     if(err){
@@ -39,13 +43,17 @@ fs.lstat(dir, function(err, stats) {
         });
     }
     else{              
-        var params = {Bucket: bucket, Key: dir, ACL: acl, ContentType: getContentType(dir.split('.').pop()), Body: fs.createReadStream(dir) };
+        var key = dir.split('/').pop();
+        if(prefix){
+            key = prefix + key;
+        }
+        var params = {Bucket: bucket, Key: key, ACL: acl, ContentType: getContentType(key.split('.').pop()), Body: fs.createReadStream(dir) };
         s3.upload(params, function(err, data) {
             if(err){
                 tl.error(err);    
             }
             else{
-                console.log('Uploaded ' + dir);
+                console.log('Uploaded ' + key);
             }
         });
     }
