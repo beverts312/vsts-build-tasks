@@ -1,0 +1,53 @@
+{
+  "id": "4627b7a0-ebee-11e5-94f0-53c16f76ebac",
+  "name": "RunPlaybook",
+  "friendlyName": "Run Playbook",
+  "description": "Runs an ansible playbook",
+  "author": "Bailey Everts",
+  "helpMarkDown": "This can be used to run ansible playbooks (Ansible must be installed with on your agent machine)",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "2"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "RunPlaybook $(message)",
+  "inputs": [
+    {
+      "name": "cwd",
+      "type": "filePath",
+      "label": "Working Directory",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "This should be the directory containing your playbook"
+    },
+    {
+      "name": "playbook",
+      "type": "string",
+      "label": "Playbook",
+      "defaultValue": ".yml",
+      "required": true,
+      "helpMarkDown": "This shoud be the name of your playbook"
+    },
+    {
+      "name": "extra",
+      "type": "string",
+      "label": "Extra Params",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Exta parameters to provide your playbook"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "run.js",
+      "argumentFormat": ""
+    }
+  }
+}
