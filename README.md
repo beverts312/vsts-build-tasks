@@ -1,12 +1,3 @@
-## vsoagent Docker Image 
-***Still working on this***  
-This is for a containerized VSO build agent.
-Included binaries
-- docker
-- docker-compose
-- docker-machine  
-http://roadtoalm.com/2015/08/07/running-a-visual-studio-build-vnext-agent-in-a-docker-container/  
-  
 ## Working with Tasks
 For doing anything with tasks you will need:   
 - tfx-cli (`npm install -g tfx-cli`)
@@ -17,7 +8,7 @@ You will then need to connect to your VSO account by running `tfx login`
 You can then run:  
 - `tfx build tasks list` lists all your tasks and some basic info about them  
 - `tfx build tasks create` will ask you some questions about the task you want to make and create a template for it  
-- `tfx build tasks upload <task dir>` uploads the task your VSO account (you will need to use `--overwrite=true` if the task already exists)
+- `tfx build tasks upload` uploads the task your VSO account  
 
 # Tasks  
 
