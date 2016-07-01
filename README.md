@@ -3,42 +3,20 @@ For doing anything with tasks you will need:
 - tfx-cli (`npm install -g tfx-cli`)
 - a personal access token (go to the 'Security' tab on your VSO profile)  
 
-You will then need to connect to your VSO account by running `tfx login`  
+You will then need to connect to your VSTS account by running `tfx login`  
 
 You can then run:  
 - `tfx build tasks list` lists all your tasks and some basic info about them  
 - `tfx build tasks create` will ask you some questions about the task you want to make and create a template for it  
-- `tfx build tasks upload` uploads the task your VSO account  
+- `tfx build tasks upload` uploads the task your VSTS account  
 
 # Tasks  
 
-## Docker Build  
-This task must be run using the xplat agent with docker installed.  
-Lets you build a Dockerfile into a Docker Image
-Parameters:  
-- Working Directory: this should be where your dockerfile is located  
-- Image Name: name to tag your image with (i.e beverts312/vsoagent)
-
-## Docker Tag  
-This task must be run using the xplat agent with docker installed.  
-Lets you tag a docker image
-Parameters:  
-- Old Tag: Old Image tag (i.e beverts312/vsoagent)
-- New Tag: New Image tag (i.e beverts312/vsoagent:100)
-
-## Docker Push  
-This task must be run using the xplat agent with docker installed.  
-Lets you push a docker image
-Parameters:  
-- Image Name: name of the image to push (i.e beverts312/vsoagent)
-
-## Create Azure Swarm Cluster  
-***Coming Soon***
-
-
-## Create AWS Swarm Cluster  
-***Coming Soon***
-
-
-## Create Hybrid Swarm Cluster  
-***Coming Soon***
+| Task | Description |
+|----------|-------------|
+| [docker-build](./docker-build/README.md) | Builds a Docker Image |  
+| [docker-login](./docker-login/README.md) | Login to Docker Hub |  
+| [docker-push](./docker-push/README.md) | Push Docker Image |  
+| [run-ansible-playbook](./run-ansible-playbook/README.md) | Run Ansible Playbook |  
+| [run-sonar-scanner](./run-sonar-scanner/README.md) | Run Sonar Scanner |  
+| [s3-upload](./s3-upload/README.md) | Upload File(s) to AWS S3 |  
