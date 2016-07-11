@@ -1,0 +1,101 @@
+{
+  "id": "1f647710-3efb-11e6-b30f-6bcd89b945b4",
+  "name": "RunSonarScanner",
+  "friendlyName": "Run Sonar Scanner",
+  "description": "Uses the Sonar Scanner to analyze your code and push it to a sonar server",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "0",
+    "Patch": "16"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "RunSonarScanner $(message)",
+  "inputs": [
+    {
+      "name": "cwd",
+      "type": "filePath",
+      "label": "Working Directory",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Current working directory when RunSonarScanner is run."
+    },
+    {
+      "name": "projectFolders",
+      "type": "string",
+      "label": "Project Folder(s)",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Folders to Scan (relative to working directory)"
+    },
+    {
+      "name": "projectKey",
+      "type": "string",
+      "label": "Project Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Project Key"
+    },
+    {
+      "name": "projectName",
+      "type": "string",
+      "label": "Project Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Project Name"
+    },
+    {
+      "name": "projectVersion",
+      "type": "string",
+      "label": "Project Version",
+      "defaultValue": "1.0",
+      "required": true,
+      "helpMarkDown": "Project Key"
+    },
+    {
+      "name": "language",
+      "type": "string",
+      "label": "Language",
+      "defaultValue": "js",
+      "required": true,
+      "helpMarkDown": "Language"
+    },
+{
+      "name": "sonarUrl",
+      "type": "string",
+      "label": "Sonar Url",
+      "defaultValue": "$(sonarUrl)",
+      "required": true,
+      "helpMarkDown": "Sonar Url"
+    },
+    {
+      "name": "sonarUser",
+      "type": "string",
+      "label": "Sonar user",
+      "defaultValue": "admin",
+      "required": true,
+      "helpMarkDown": "Sonar User"
+    },
+    {
+      "name": "sonarPassword",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "$(password)",
+      "required": true,
+      "helpMarkDown": "Sonar Password"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "src/sonar-scanner.js",
+      "argumentFormat": ""
+    }
+  }
+}
