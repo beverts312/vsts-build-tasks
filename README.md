@@ -20,3 +20,6 @@ You can then run:
 | [run-ansible-playbook](./run-ansible-playbook/README.md) | Run Ansible Playbook |  
 | [run-sonar-scanner](./run-sonar-scanner/README.md) | Run Sonar Scanner |  
 | [s3-upload](./s3-upload/README.md) | Upload File(s) to AWS S3 |  
+
+# Dockerized VSTS Agent  
+Want to run your VSTS agent as a docker container? You can do this easily by using [beverts312/vsts-agent](https://hub.docker.com/r/beverts312/vsts-agent/) or you can use my [images](https://github.com/beverts312/vsts-build-tasks) as reference.
