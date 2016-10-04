@@ -1,5 +1,5 @@
 {
-  "id": "1f647710-3efb-11e6-b30f-6bcd89b945b4",
+  "id": "0c86dff0-8a3e-11e6-8ef5-45433daed30d",
   "name": "CreateDockerEndpoint",
   "friendlyName": "Create Docker Endpoint",
   "description": "Uses the VSTS API to create a new Docker Endpoint",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "0",
     "Minor": "0",
-    "Patch": "1"
+    "Patch": "10"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Create Docker Endpoint",
