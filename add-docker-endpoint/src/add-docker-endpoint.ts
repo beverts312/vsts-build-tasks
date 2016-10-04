@@ -33,6 +33,7 @@ dockerEndpoint.name = name;
 dockerEndpoint.url = serverUrl;
 dockerEndpoint.authorization.parameters.cacert = fs.readFileSync(caCertPath, 'utf8');
 dockerEndpoint.authorization.parameters.cert = fs.readFileSync(certPath, 'utf8');
+dockerEndpoint.authorization.parameters.certificate = dockerEndpoint.authorization.parameters.cert;
 dockerEndpoint.authorization.parameters.key = fs.readFileSync(keyPath, 'utf8');
 
 request.post(uri, {'auth':{'bearer':systemAccessToken}, json: true, body: dockerEndpoint }, (err:any, res: any, data: string) =>{

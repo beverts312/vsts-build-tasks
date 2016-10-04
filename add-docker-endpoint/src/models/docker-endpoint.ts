@@ -4,6 +4,6 @@ class DockerEndpoint {
   name:string;
   type: string = 'dockerhost';
   url: string;
-  authorization: DockerAuth
+  authorization: DockerAuth = new DockerAuth();
 }
 export = DockerEndpoint;

@@ -14,7 +14,7 @@
   "version": {
     "Major": "0",
     "Minor": "0",
-    "Patch": "11"
+    "Patch": "13"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Create Docker Endpoint",
@@ -33,7 +33,7 @@
       "label": "URL to Docker Endpoint",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Should follow the form tcp://<HOSTNAME OR IP>:<PORT>"
+      "helpMarkDown": "Should follow the format tcp://<HOSTNAME OR IP>:<PORT>"
     },
     {
       "name": "caCertPath",
