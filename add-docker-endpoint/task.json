@@ -1,0 +1,69 @@
+{
+  "id": "1f647710-3efb-11e6-b30f-6bcd89b945b4",
+  "name": "CreateDockerEndpoint",
+  "friendlyName": "Create Docker Endpoint",
+  "description": "Uses the VSTS API to create a new Docker Endpoint",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "0",
+    "Patch": "1"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Create Docker Endpoint",
+  "inputs": [
+    {
+      "name": "connectionName",
+      "type": "string",
+      "label": "Connection Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "This is the name of your Docker Service Endpoint"
+    },
+    {
+      "name": "serverUrl",
+      "type": "string",
+      "label": "URL to Docker Endpoint",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Should follow the form tcp://<HOSTNAME OR IP>:<PORT>"
+    },
+    {
+      "name": "caCertPath",
+      "type": "filePath",
+      "label": "Path CA Certificate",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path to CA Certificate"
+    },
+    {
+      "name": "certPath",
+      "type": "filePath",
+      "label": "Path Certificate",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path to Certificate"
+    },
+    {
+      "name": "keyPath",
+      "type": "filePath",
+      "label": "Path Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path to Private Key"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "src/add-docker-endpoint.js",
+      "argumentFormat": ""
+    }
+  }
+}
