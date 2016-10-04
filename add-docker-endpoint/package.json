@@ -23,6 +23,7 @@
     "typescript": "^1.8.10"
   },
   "dependencies": {
+    "request": "^2.75.0",
     "vsts-task-lib": "^0.8.3"
   }
 }
