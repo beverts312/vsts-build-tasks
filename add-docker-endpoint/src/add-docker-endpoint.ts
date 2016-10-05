@@ -38,6 +38,7 @@ dockerEndpoint.authorization.parameters.key = fs.readFileSync(keyPath, 'utf8');
 
 request.get(uri, (err: any, res: any, data: string) => {
     if (!err) {
+        console.log('Succesfully retrieved existing endpoints');
         let update = false;
         let endpoints =  (JSON.parse(data)).value;
         for( var i = 0; i < endpoints.length; i++){
@@ -52,6 +53,9 @@ request.get(uri, (err: any, res: any, data: string) => {
                 if (err) {
                     tl.error(err);
                 }
+                else {
+                    console.log('Updated Succesfully');
+                }
             });
         }
         else {
@@ -60,10 +64,14 @@ request.get(uri, (err: any, res: any, data: string) => {
                 if (err) {
                     tl.error(err);
                 }
+                else {
+                    console.log('Created Succesfully');                    
+                }
             });
         }
     }
     else {
+        console.log('Failed to retrieve existing endpoints');
         tl.error(err);
     }
 });
