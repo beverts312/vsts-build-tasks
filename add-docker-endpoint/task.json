@@ -1,7 +1,7 @@
 {
   "id": "0c86dff0-8a3e-11e6-8ef5-45433daed30d",
   "name": "CreateDockerEndpoint",
-  "friendlyName": "Create Docker Endpoint",
+  "friendlyName": "Create or Update Docker Endpoint",
   "description": "Uses the VSTS API to create a new Docker Endpoint",
   "author": "Bailey Everts",
   "helpMarkDown": "Replace with markdown to show in help",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "0",
     "Minor": "0",
-    "Patch": "13"
+    "Patch": "18"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Create Docker Endpoint",
@@ -58,6 +58,30 @@
       "defaultValue": "",
       "required": true,
       "helpMarkDown": "Path to Private Key"
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "label": "User",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "pat",
+      "type": "string",
+      "label": "PAT",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "project",
+      "type": "string",
+      "label": "Project",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
     }
   ],
   "execution": {
