@@ -18,10 +18,10 @@ const keyPath = tl.getPathInput('keyPath', true);
 
 const collectionUri = tl.getVariable('System.TeamFoundationCollectionUri');
 const apiVersion = '?api-version=3.0-preview.1';
-const endpointPath = '/_apis/distributedtask/serviceendpoint';
+const endpointPath = '/_apis/distributedtask/serviceendpoints';
 const authStr = 'https://' + user + ':' + pat + '@';
 const uriBase = collectionUri.replace('https://', authStr) + project + endpointPath;
-let uri = uriBase + 's' + apiVersion;
+let uri = uriBase + apiVersion;
 
 
 tl.checkPath(caCertPath, 'cwd');
