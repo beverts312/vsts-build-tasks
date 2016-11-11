@@ -14,9 +14,7 @@ You can then run:
 
 | Task | Description |
 |----------|-------------|
-| [docker-build](./docker-build/README.md) | Builds a Docker Image |  
-| [docker-login](./docker-login/README.md) | Login to Docker Hub |  
-| [docker-push](./docker-push/README.md) | Push Docker Image |  
+| [add-docker-endpoint](./add-docker-endpoint/README.md)| Adds a docker service endpoint| 
 | [run-ansible-playbook](./run-ansible-playbook/README.md) | Run Ansible Playbook |  
 | [run-sonar-scanner](./run-sonar-scanner/README.md) | Run Sonar Scanner |  
 | [s3-upload](./s3-upload/README.md) | Upload File(s) to AWS S3 |  
