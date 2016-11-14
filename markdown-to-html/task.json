@@ -1,0 +1,45 @@
+{
+    "id": "1f647724-3efb-11e6-b30f-6bcd89b945b4",
+    "name": "ConvertMdToHtml",
+    "friendlyName": "Convert md to HTML",
+    "description": "Uses the github API to create html files from md files",
+    "author": "Bailey Everts",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "demands": [],
+    "version": {
+        "Major": "0",
+        "Minor": "0",
+        "Patch": "11"
+    },
+    "minimumAgentVersion": "1.83.0",
+    "instanceNameFormat": "Generate HTML",
+    "inputs": [
+        {
+            "name": "inputLocation",
+            "type": "filePath",
+            "label": "File/Folder to Convert",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "If folder is selected, md files in all sub folders will be converted"
+        },
+        {
+            "name": "outputLocation",
+            "type": "filePath",
+            "label": "Where to place converted files",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Will create folder if it does not exist"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "src/convert-md-task.js",
+            "argumentFormat": ""
+        }
+    }
+}
