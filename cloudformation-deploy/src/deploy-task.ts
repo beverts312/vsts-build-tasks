@@ -19,22 +19,21 @@ const cloudform = new CloudFormationUtils(opts);
 
 const success = () => {
     console.log('%s created/updated successfully', name);
-    tl.exit(0);
+    process.exit(0);
 };
 
 const fail = (err) => {
     tl.error('One or more errors occured');
     tl.error(err);
-    tl.exit(1);
+    process.exit(1);
 }
 
-if(templatePath == process.env.BUILD_SOURCESDIRECTORY){
+if((templatePath == process.env.BUILD_SOURCESDIRECTORY) || (templatePath == process.env.SYSTEM_DEFAULTWORKINGDIRECTORY)){
     templatePath = null;
 }
 
 if((!templateUrl && !templatePath) || (templateUrl && templatePath)) {
-    tl.error('Must provide either template Url or Path');
-    tl.exit(1);
+    fail('Must provide either template Url or Path');
 }
 else if (templatePath) {
     cloudform.createOrUpdateStackFile(name, templatePath).then(success)
