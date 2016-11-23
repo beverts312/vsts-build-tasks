@@ -60,7 +60,7 @@ class CloudFormationUtils {
                 }
                 const stacks = data.StackSummaries;
                 for (let i = 0; i < stacks.length; i++) {
-                    if (stacks[i].StackName == name) {
+                    if (stacks[i].StackName == name && stacks[i].StackStatus != 'DELETE_COMPLETE') {
                         resolve(true);
                     }
                 }

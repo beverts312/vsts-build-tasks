@@ -14,7 +14,7 @@
   "version": {
     "Major": "0",
     "Minor": "0",
-    "Patch": "7"
+    "Patch": "8"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Cloud Formation Deploy",
