@@ -1,0 +1,85 @@
+{
+  "id": "0c86dff0-8a3e-11e6-8ef5-45433deaf61a",
+  "name": "CreateOrUpdateCloudFormation",
+  "friendlyName": "Create/Update CloudForm Stack",
+  "description": "Creates or updates a cloud formation stack",
+  "author": "Bailey Everts",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "0",
+    "Patch": "6"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Cloud Formation Deploy",
+  "inputs": [
+    {
+      "name": "stackName",
+      "type": "string",
+      "label": "Stack Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "templatePath",
+      "type": "filePath",
+      "label": "Template Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "templateUrl",
+      "type": "string",
+      "label": "Template URL",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "paramsPath",
+      "type": "filePath",
+      "label": "Params Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Not Implimented"
+    },
+    {
+      "name": "awsAccess",
+      "type": "string",
+      "label": "AWS ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "awsSecret",
+      "type": "string",
+      "label": "AWS Secret",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "awsRegion",
+      "type": "string",
+      "label": "AWS Region",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "src/deploy-task.js",
+      "argumentFormat": ""
+    }
+  }
+}

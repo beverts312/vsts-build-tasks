@@ -1,0 +1,1 @@
+Adds Docker Service endpoint to VSTS
