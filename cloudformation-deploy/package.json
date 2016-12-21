@@ -11,6 +11,7 @@
   "author": "Bailey Everts",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^6.0.52",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.1",
@@ -23,7 +24,7 @@
     "typescript": "^1.8.10"
   },
   "dependencies": {
-    "aws-sdk": "^2.7.7",
+    "aws-mgmt-utils": "0.0.4",
     "vsts-task-lib": "^0.8.3"
   }
 }

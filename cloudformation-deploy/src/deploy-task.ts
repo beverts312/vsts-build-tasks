@@ -1,5 +1,5 @@
 import tl = require('vsts-task-lib/task');
-import CloudFormationUtils = require('./cloud-formation-utils');
+import utils = require('aws-mgmt-utils');
 
 const name = tl.getInput('stackName', true);
 let templatePath = tl.getPathInput('templatePath', false);
@@ -15,7 +15,7 @@ const opts = {
     region: region
 };
 
-const cloudform = new CloudFormationUtils(opts);
+const cloudform = new utils.CloudFormationUtils(opts);
 
 const success = () => {
     console.log('%s created/updated successfully', name);
