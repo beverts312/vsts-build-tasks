@@ -8,37 +8,33 @@ const mkFilePromise = (path: string, data: string): Promise<boolean> => {
         fs.writeFile(path, JSON.stringify(data), (err) => {
             if (err) {
                 reject(err);
-            }
-            else {
+            } else {
                 resolve(true);
             }
         });
     });
-}
+};
 
 const convertMdFile = (path: string, outputPath: string): Promise<boolean> => {
     return new Promise<boolean>((resolve, reject) => {
         fs.readFile(path, '', (err, mdText) => {
             if (err) {
                 reject(err);
-            }
-            else {
+            } else {
                 convertMdService(mdText.toString()).then((htmlText) => {
-                    let outputDir = outputPath.replace(outputPath.split('/')[outputPath.split('/').length - 1], '');
-                    if (fs.existsSync(outputDir) != true) {
+                    const outputDir = outputPath.replace(outputPath.split('/')[outputPath.split('/').length - 1], '');
+                    if (fs.existsSync(outputDir) !== true) {
                         mkdirp(outputDir, (err, made) => {
                             if (err) {
-                                reject(err)
-                            }
-                            else {
-                                mkFilePromise(outputPath, htmlText).then((res) => { resolve(res) })
-                                    .catch((res) => { reject(res) });
+                                reject(err);
+                            } else {
+                                mkFilePromise(outputPath, htmlText).then((res) => { resolve(res); })
+                                    .catch((res) => { reject(res); });
                             }
                         });
-                    }
-                    else {
-                        mkFilePromise(outputPath, htmlText).then((res) => { resolve(res) })
-                            .catch((res) => { reject(res) });
+                    } else {
+                        mkFilePromise(outputPath, htmlText).then((res) => { resolve(res); })
+                            .catch((res) => { reject(res); });
                     }
                 }).catch((err) => {
                     reject(err);

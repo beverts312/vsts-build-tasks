@@ -1,7 +1,8 @@
 import request = require('request');
 
+const uri = 'https://api.github.com/markdown';
+
 const convertMdToHtml = (markdown: string): Promise<string> => {
-    let uri = "https://api.github.com/markdown";
     return new Promise<string>((resolve) => {
         request.post(uri,
             {
@@ -10,6 +11,6 @@ const convertMdToHtml = (markdown: string): Promise<string> => {
                 resolve(body);
             });
     });
-}
+};
 
 export = convertMdToHtml;

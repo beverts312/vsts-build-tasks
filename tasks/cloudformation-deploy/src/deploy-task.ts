@@ -26,20 +26,18 @@ const fail = (err) => {
     tl.error('One or more errors occured');
     tl.error(err);
     process.exit(1);
-}
+};
 
-if((templatePath == process.env.BUILD_SOURCESDIRECTORY) || (templatePath == process.env.SYSTEM_DEFAULTWORKINGDIRECTORY)){
+if ((templatePath === process.env.BUILD_SOURCESDIRECTORY) || (templatePath === process.env.SYSTEM_DEFAULTWORKINGDIRECTORY)) {
     templatePath = null;
 }
 
-if((!templateUrl && !templatePath) || (templateUrl && templatePath)) {
+if ((!templateUrl && !templatePath) || (templateUrl && templatePath)) {
     fail('Must provide either template Url or Path');
-}
-else if (templatePath) {
+} else if (templatePath) {
     cloudform.createOrUpdateStackFile(name, templatePath).then(success)
         .catch(fail);
-}
-else {
+} else {
     cloudform.createOrUpdateStackUrl(name, templateUrl).then(success)
         .catch(fail);
 }

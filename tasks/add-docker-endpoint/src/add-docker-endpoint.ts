@@ -1,11 +1,8 @@
 import tl = require('vsts-task-lib/task');
-import path = require('path');
 import fs = require('fs');
 import request = require('request');
 
 import DockerEndpoint = require('./models/docker-endpoint');
-import DockerAuth = require('./models/docker-auth');
-import DockerAutParams = require('./models/docker-auth-params');
 
 const name = tl.getInput('connectionName', true);
 const user = tl.getInput('user', true);
@@ -28,7 +25,7 @@ tl.checkPath(caCertPath, 'cwd');
 tl.checkPath(certPath, 'cwd');
 tl.checkPath(keyPath, 'cwd');
 
-let dockerEndpoint = new DockerEndpoint();
+const dockerEndpoint = new DockerEndpoint();
 dockerEndpoint.name = name;
 dockerEndpoint.url = serverUrl;
 dockerEndpoint.authorization.parameters.cacert = fs.readFileSync(caCertPath, 'utf8');
@@ -40,37 +37,33 @@ request.get(uri, (err: any, res: any, data: string) => {
     if (!err) {
         console.log('Succesfully retrieved existing endpoints');
         let update = false;
-        let endpoints =  (JSON.parse(data)).value;
-        for( var i = 0; i < endpoints.length; i++){
-            if(endpoints[i].name == name){
+        const endpoints = (JSON.parse(data)).value;
+        for (let i = 0; i < endpoints.length; i++) {
+            if (endpoints[i].name === name) {
                 update = true;
                 uri = uriBase + '/' + endpoints[i].id + apiVersion;
             }
         }
-        if (update == true){
+        if (update) {
             console.log('Endpoint with name %s exists, updating existing endpoint', name);
             request.put(uri, { json: true, body: dockerEndpoint }, (err: any, res: any, data: string) => {
                 if (err) {
                     tl.error(err);
-                }
-                else {
+                } else {
                     console.log('Updated Succesfully');
                 }
             });
-        }
-        else {
+        } else {
             console.log('Endpoint does not exist, creating new endpoint');
             request.post(uri, { json: true, body: dockerEndpoint }, (err: any, res: any, data: string) => {
                 if (err) {
                     tl.error(err);
-                }
-                else {
-                    console.log('Created Succesfully');                    
+                } else {
+                    console.log('Created Succesfully');
                 }
             });
         }
-    }
-    else {
+    } else {
         console.log('Failed to retrieve existing endpoints');
         tl.error(err);
     }

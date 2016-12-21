@@ -1,39 +1,36 @@
-import tl = require("vsts-task-lib/task");
-import path = require("path");
-import fs = require("fs");
+import tl = require('vsts-task-lib/task');
+const sonar = tl.tool(tl.which('sonar-scanner', false));
 
-let sonar = tl.createToolRunner(tl.which("sonar-scanner", false));
+const cwd = tl.getPathInput('cwd', false);
+const sonarSources = tl.getInput('projectFolders', false);
+const projectKey = tl.getInput('projectKey', true);
+const projectName = tl.getInput('projectName', true);
+const projectLanguage = tl.getInput('language', true);
+const projectVersion = tl.getInput('projectVersion', false);
+const sonarUrl = tl.getInput('sonarUrl', false);
+const sonarUser = tl.getInput('sonarUser', false);
+const sonarPassword = tl.getInput('sonarPassword', false);
+//const propertyFileName = cwd + '/sonar-project.properties';
 
-let cwd = tl.getPathInput("cwd", false);
-let sonarSources = tl.getInput("projectFolders", false);
-let projectKey = tl.getInput("projectKey", true);
-let projectName = tl.getInput("projectName", true);
-let projectLanguage = tl.getInput("language", true);
-let projectVersion = tl.getInput("projectVersion", false);
-let sonarUrl = tl.getInput("sonarUrl", false);
-let sonarUser = tl.getInput("sonarUser", false);
-let sonarPassword = tl.getInput("sonarPassword", false);
-let propertyFileName = cwd + "/sonar-project.properties";
-
-tl.checkPath(cwd, "cwd");
+tl.checkPath(cwd, 'cwd');
 tl.cd(cwd);
 
-sonar.arg("-e");
-sonar.arg("-Dsonar.host.url=" + sonarUrl);
-sonar.arg("-Dsonar.login=" + sonarUser);
-sonar.arg("-Dsonar.password=" + sonarPassword);
-sonar.arg("-Dsonar.projectKey=" + projectKey);
-sonar.arg("-Dsonar.projectName=" + projectName);
-sonar.arg("-Dsonar.projectVersion=" + projectVersion);
-sonar.arg("-Dsonar.language=" + projectLanguage);
-sonar.arg("-Dsonar.sources=" + sonarSources);
+sonar.arg('-e');
+sonar.arg('-Dsonar.host.url=' + sonarUrl);
+sonar.arg('-Dsonar.login=' + sonarUser);
+sonar.arg('-Dsonar.password=' + sonarPassword);
+sonar.arg('-Dsonar.projectKey=' + projectKey);
+sonar.arg('-Dsonar.projectName=' + projectName);
+sonar.arg('-Dsonar.projectVersion=' + projectVersion);
+sonar.arg('-Dsonar.language=' + projectLanguage);
+sonar.arg('-Dsonar.sources=' + sonarSources);
 
-sonar.exec({ failOnStdErr: false })
+sonar.exec()
     .then((code) => {
-        tl.exit(code);
+        process.exit(code);
     })
     .fail((err) => {
         console.error(err.message);
-        tl.debug("taskRunner fail");
-        tl.exit(1);
+        tl.debug('taskRunner fail');
+        process.exit(1);
     });

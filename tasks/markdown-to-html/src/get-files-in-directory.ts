@@ -28,9 +28,8 @@ const getFilesInDirectory = (path): Promise<string[]> => {
                             }
                         }).catch((err) => {
                             reject(err);
-                        })
-                    }
-                    else {
+                        });
+                    } else {
                         list.push(file);
                         pending -= 1;
                         if (!pending) {
@@ -41,6 +40,6 @@ const getFilesInDirectory = (path): Promise<string[]> => {
             });
         });
     });
-}
+};
 
 export = getFilesInDirectory;

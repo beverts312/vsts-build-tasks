@@ -22,6 +22,11 @@
     "transpile": "gulp transpile",
     "validate": "npm ls"
   },
+  "pre-commit": [
+    "check-security",
+    "enforce-code-coverage",
+    "lint"
+  ],
   "devDependencies": {
     "@types/node": "^6.0.52",
     "@types/chai": "^3.4.34",
