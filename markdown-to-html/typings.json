@@ -1,9 +1,0 @@
-{
-  "dependencies": {},
-  "globalDependencies": {
-    "mkdirp": "registry:dt/mkdirp#0.3.0+20160317120654",
-    "node": "registry:dt/node#6.0.0+20160621231320",
-    "request": "registry:dt/request#0.0.0+20160726020908",
-    "vsts-task-lib": "github:Microsoft/vsts-tasks/definitions/vsts-task-lib.d.ts#b126ea40025ade8f55419358274d3a0b176ddb6d"
-  }
-}
