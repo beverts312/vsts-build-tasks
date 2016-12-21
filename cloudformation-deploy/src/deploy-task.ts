@@ -15,7 +15,7 @@ const opts = {
     region: region
 };
 
-const cloudform = new utils.CloudFormationUtils(opts);
+const cloudform = new utils.CloudFormation(opts);
 
 const success = () => {
     console.log('%s created/updated successfully', name);
