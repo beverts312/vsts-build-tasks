@@ -1,10 +1,10 @@
 'use strict';
 
 var path = require('path');
-var srcRoot = '**/src';
-var outputRoot = '**/out';
-var testRoot = '**/test';
-var typescriptDefinitions = '**/node_modules/@types/*/index.d.ts';
+var srcRoot = './tasks/**/src';
+var outputRoot = './tasks/**/out';
+var testRoot = './tasks/**/test';
+var typescriptDefinitions = './node_modules/@types/*/index.d.ts';
 var tsconfig = './tsconfig.json';
 
 module.exports = {
