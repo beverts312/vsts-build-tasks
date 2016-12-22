@@ -59,7 +59,7 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
-    "aws-mgmt-utils": "0.0.4",
+    "aws-mgmt-utils": "0.0.6",
     "mkdirp": "^0.5.1",
     "request": "^2.79.0",
     "vsts-task-lib": "^1.1.0"

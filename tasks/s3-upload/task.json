@@ -14,7 +14,7 @@
   "version": {
     "Major": "0",
     "Minor": "1",
-    "Patch": "28"
+    "Patch": "29"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "S3Upload $(message)",
@@ -28,36 +28,12 @@
       "helpMarkDown": "dir to upload / File on windows agent currently"
     },
     {
-      "name": "access",
-      "type": "string",
-      "label": "AWS Access",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "AWS Access Key"
-    },
-    {
-      "name": "secret",
-      "type": "string",
-      "label": "AWS Secret",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "AWS Secret Key"
-    },
-    {
       "name": "bucket",
       "type": "string",
       "label": "S3 Bucket",
       "defaultValue": "",
       "required": true,
       "helpMarkDown": "S3 Bucket"
-    },
-    {
-      "name": "region",
-      "type": "string",
-      "label": "Region",
-      "defaultValue": "us-east-1",
-      "required": false,
-      "helpMarkDown": "AWS Region"
     },
     {
       "name": "acl",
@@ -78,7 +54,7 @@
   ],
   "execution": {
     "Node": {
-      "target": "s3.js",
+      "target": "src/s3.js",
       "argumentFormat": ""
     }
   }
